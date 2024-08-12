@@ -32,6 +32,12 @@ export class UsersService {
           name: "Mike Davis",
           email: "mike.davis@example.com",
           role: "ADMIN"
+        },
+        {
+          id: 6,
+          name: "Mike Pumper",
+          email: "mike.pumper@example.com",
+          role: "ADMIN"
         }
       ];
 
