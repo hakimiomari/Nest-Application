@@ -57,24 +57,22 @@ export class AuthService {
       },
     });
     const access_token = await this.signToken(
-      user.id,
-      user.email,
-      process.env.SECRET_KEY,
-      '1h',
-    );
-    const refresh_token = await this.signToken(
-      user.id,
-      user.email,
-      process.env.REFRESH_KEY,
-      '7d',
-    );
-
-    return this.signToken(
       newUser.id,
       newUser.email,
       process.env.SECRET_KEY,
       '1h',
     );
+    const refresh_token = await this.signToken(
+      newUser.id,
+      newUser.email,
+      process.env.REFRESH_KEY,
+      '7d',
+    );
+
+    return {
+      access_token,
+      refresh_token
+    }
   }
 
   // refresh token

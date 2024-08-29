@@ -7,6 +7,11 @@ export class UserController {
     constructor(private userService:UserService){}
 
     @UseGuards(JwtGuard)
+    @Get()
+    async getAllUsers(){
+        return this.userService.findAllUsers();
+    }
+    @UseGuards(JwtGuard)
     @Get(':id')
     async getUserProfile(@Param('id') id:number){
         return this.userService.findUserById(id);
