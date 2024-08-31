@@ -12,13 +12,10 @@ export class RefreshGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const token = await this.extractRefreshTokenFromHeader(request);
     if(!token) throw new UnauthorizedException();
-    console.log(token);
     try{
         const payload = await this.jwtService.verifyAsync(token, {
           secret: process.env.REFRESH_KEY,
         });
-
-        console.log(payload);
         request['user'] = payload;
     }catch(error){
       console.log(error)
